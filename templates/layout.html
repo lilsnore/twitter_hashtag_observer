@@ -19,6 +19,27 @@
     <link href="https://getbootstrap.com/docs/4.0/examples/album/album.css" rel="stylesheet">
   </head>
 
+  <script>
+    var server = "http://127.0.0.1:5000";
+    var num_images = 9;
+    setInterval(request_images, 10000);
+    var hashtag = ""
+
+    function request_images() {
+
+        hashtag = document.getElementById("hashtag2").value;
+
+        fetch(server+"/images"+"?hashtag="+hashtag+"&num_img="+num_images)
+        .then(function(response) {
+          return response.json();})
+        .then(function(jsonResponse){
+          images = document.querySelectorAll(".card-img-top");
+          images.forEach(function (value, index, array){value
+          .src=jsonResponse[index];});
+        });
+    }
+  </script>
+
   <body>
 
     <header>
@@ -84,25 +105,6 @@
 
 
       </section>
-        <script>
-            var server = "http://127.0.0.1:5000";
-            var images = 9;
-            setInterval(request_images, 10000);
-            var hashtag = ""
-
-            function request_images() {
-
-                hashtag = document.getElementById("hashtag2").value;
-
-                fetch(server+"/images"+"?hashtag="+hashtag+"&num_img="+images)
-                .then(function(response) {
-                  return response.json();})
-                .then(function(jsonResponse){
-                  console.log(jsonResponse);
-                  document.querySelector("#img1").src = jsonResponse[0];
-                });
-            }
-        </script>
 
       <div class="album py-5 bg-light">
         <div class="container">
