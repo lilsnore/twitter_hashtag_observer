@@ -1,2 +1,2 @@
-twitter-scraper>=0.4.4
 flask>=1.1.2
+git+git://github.com/sm-ghavami/twitterscraper@2233682b3c04840531a94ba8ee3c3325d7bf6b4a

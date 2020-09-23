@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request, render_template
-from provider import HashtagRequest
+from hashtag_observer.provider import HashtagRequest
 
 app = Flask(__name__)
 
@@ -17,5 +17,9 @@ def get_urls():
     return jsonify(req.get_urls(num_img))
 
 
-if __name__ == '__main__':
+def run():
     app.run(debug=True)
+
+
+if __name__ == '__main__':
+    run()

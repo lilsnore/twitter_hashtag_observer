@@ -29,7 +29,10 @@
 
         hashtag = document.getElementById("hashtag2").value;
 
-        fetch(server+"/images"+"?hashtag="+hashtag+"&num_img="+num_images)
+        var url = server+"/images?hashtag=#"+hashtag+"&num_img="+num_images;
+        console.log(url);
+
+        fetch(url)
         .then(function(response) {
           return response.json();})
         .then(function(jsonResponse){
